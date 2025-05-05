@@ -462,8 +462,6 @@ const rules = [
   "RULE-SET,bahamut,📺 巴哈姆特",
   "RULE-SET,bilibili,📺 哔哩哔哩",
   "RULE-SET,pikpak,🅿️ PikPak",
-  "RULE-SET,bing,Ⓜ️ 微软 Bing",
-  "RULE-SET,microsoft,Ⓜ️ 微软服务",
   "RULE-SET,netflix,📹 Netflix",
   "RULE-SET,youtube,📹 YouTube",
   "RULE-SET,spotify,🎧 Spotify",
@@ -485,6 +483,8 @@ const rules = [
   "RULE-SET,category-pt,👇 下载专用",
   "RULE-SET,category-public-tracker,👇 下载专用",
   "RULE-SET,category-social-media-not-cn,📱 社交媒体",
+  "RULE-SET,bing,Ⓜ️ 微软 Bing",
+  "RULE-SET,microsoft,Ⓜ️ 微软服务",
 
   // Loyalsoldier 规则集
   "RULE-SET,direct,🎯 全局直连",
