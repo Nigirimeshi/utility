@@ -46,7 +46,7 @@ const dnsConfig = {
     "uu.163.com",
   ],
   // 用于解析 DNS 服务器的域名, 必须为 IP, 可为加密 DNS
-  "default-nameserver": [...defaultNameservers], 
+  "default-nameserver": [...defaultNameservers],
   // 默认的域名解析服务器, 如不配置 fallback/proxy-server-nameserver, 则所有域名都由 nameserver 解析
   nameserver: [...foreignNameservers],
   // 代理节点域名解析服务器，仅用于解析代理节点的域名，如果不填则遵循 nameserver-policy、nameserver 和 fallback 的配置
@@ -59,7 +59,7 @@ const dnsConfig = {
   "nameserver-policy": {
     "geosite:cn": domesticNameservers,
     // mypikpak.com 域名使用国内 DNS
-    "+.mypikpak.com": domesticNameservers, 
+    "+.mypikpak.com": domesticNameservers,
   },
 };
 
@@ -317,6 +317,12 @@ const metaCubeXRuleProviders = {
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/steam.yaml",
     path: "./ruleset/MetaCubeX/steam.yaml",
   },
+  tiktok: {
+    ...ruleProviderCommon,
+    behavior: "classical",
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/tiktok.yaml",
+    path: "./ruleset/MetaCubeX/tiktok.yaml",
+  },
   telegram: {
     ...ruleProviderCommon,
     behavior: "classical",
@@ -334,6 +340,12 @@ const metaCubeXRuleProviders = {
     behavior: "classical",
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/netflix.yaml",
     path: "./ruleset/MetaCubeX/netflix.yaml",
+  },
+  youtube: {
+    ...ruleProviderCommon,
+    behavior: "classical",
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/youtube.yaml",
+    path: "./ruleset/MetaCubeX/youtube.yaml",
   },
   // openai: {
   //   ...ruleProviderCommon,
@@ -427,7 +439,7 @@ const customRules = [
   "DOMAIN-REGEX,^dl-.+.mypikpak.net$,🅿️ PikPak 下载",
 
   // Telegram
-  "PROCESS-NAME,Telegram.exe,📲 电报消息"
+  "PROCESS-NAME,Telegram.exe,📲 电报消息",
 ];
 // ACL4SSR 规则集
 const ACL4SSRRules = [
@@ -445,6 +457,21 @@ const rules = [
   ...customRules,
 
   // MetaCubeX 规则集
+  "RULE-SET,cursor,🔰 模式选择",
+  "RULE-SET,deepseek,🤖 AI 平台",
+  "RULE-SET,bahamut,📺 巴哈姆特",
+  "RULE-SET,bilibili,📺 哔哩哔哩",
+  "RULE-SET,pikpak,🅿️ PikPak",
+  "RULE-SET,bing,Ⓜ️ 微软 Bing",
+  "RULE-SET,microsoft,Ⓜ️ 微软服务",
+  "RULE-SET,netflix,📹 Netflix",
+  "RULE-SET,youtube,📹 YouTube",
+  "RULE-SET,spotify,🎧 Spotify",
+  "RULE-SET,tiktok,🎶 TikTok",
+  "RULE-SET,telegram,📲 电报消息",
+  "RULE-SET,google-fcm,📢 谷歌 FCM",
+  "RULE-SET,google-play,📢 谷歌 Play",
+  "RULE-SET,google,📢 谷歌服务",
   "RULE-SET,category-ads-all,❌ 全局拦截",
   "RULE-SET,category-ai-not-cn,🤖 AI 平台",
   "RULE-SET,category-dev,🔰 模式选择",
@@ -458,23 +485,6 @@ const rules = [
   "RULE-SET,category-pt,👇 下载专用",
   "RULE-SET,category-public-tracker,👇 下载专用",
   "RULE-SET,category-social-media-not-cn,📱 社交媒体",
-  "RULE-SET,bahamut,📺 巴哈姆特",
-  "RULE-SET,bilibili,📺 哔哩哔哩",
-  "RULE-SET,bing,Ⓜ️ 微软 Bing",
-  "RULE-SET,cursor,🔰 模式选择",
-  "RULE-SET,deepseek,🤖 AI 平台",
-  "RULE-SET,google-fcm,📢 谷歌 FCM",
-  "RULE-SET,google-play,📢 谷歌 Play",
-  "RULE-SET,google,📢 谷歌服务",
-  "RULE-SET,microsoft,Ⓜ️ 微软服务",
-  "RULE-SET,netflix,📹 Netflix",
-  "RULE-SET,pikpak,🅿️ PikPak",
-  "RULE-SET,telegram,📲 电报消息",
-  // "RULE-SET,openai,🤖 AI 平台",
-  // "RULE-SET,anthropic,🤖 AI 平台",
-  // "RULE-SET,google-gemini,🤖 AI 平台",
-  // "RULE-SET,xai,🤖 AI 平台",
-  // "RULE-SET,perplexity,🤖 AI 平台",
 
   // Loyalsoldier 规则集
   "RULE-SET,direct,🎯 全局直连",
@@ -510,12 +520,6 @@ const landingNodeProxies = [
     udp: true,
     "dialer-proxy": "🚀 节点选择",
   },
-  // 如果有更多落地节点，在这里继续添加
-  // {
-  //   "name": "landing-node-2",
-  //   ...
-  //   "dialer-proxy": "🚀 节点选择"
-  // }
 ];
 const landingNodeNames = landingNodeProxies.map((p) => p.name);
 
@@ -777,7 +781,7 @@ const proxyGroupsConfig = [
   },
   {
     ...groupBaseOption,
-    name: "📹 Youtube",
+    name: "📹 YouTube",
     type: "select",
     proxies: [
       "🔰 模式选择",
