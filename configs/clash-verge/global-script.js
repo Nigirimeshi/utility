@@ -221,6 +221,12 @@ const metaCubeXRuleProviders = {
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/category-games.yaml",
     path: "./ruleset/MetaCubeX/category-games.yaml",
   },
+  "category-games-cn": {
+    ...ruleProviderCommon,
+    behavior: "classical",
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/category-games@cn.yaml",
+    path: "./ruleset/MetaCubeX/category-games-cn.yaml",
+  },
   "category-porn": {
     ...ruleProviderCommon,
     behavior: "classical",
@@ -440,6 +446,13 @@ const customRules = [
 
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
+
+  // Nikke
+  "PROCESS-NAME,nikke.exe,🎮 游戏",
+  "PROCESS-NAME,nikke_launcher.exe,🎮 游戏",
+
+  // 动漫
+  "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
 ];
 // ACL4SSR 规则集
 const ACL4SSRRules = [
@@ -478,7 +491,8 @@ const rules = [
   "RULE-SET,category-game-platforms-download,🎮 游戏平台下载",
   "RULE-SET,steam,🎮 Steam",
   "RULE-SET,epicgames,🎮 Epic",
-  "RULE-SET,category-games,🎮 游戏",
+  // "RULE-SET,category-games-cn,🎯 全局直连",
+  // "RULE-SET,category-games,🎮 游戏",
   "RULE-SET,category-porn,🔞 Porn",
   "RULE-SET,category-pt,👇 下载专用",
   "RULE-SET,category-public-tracker,👇 下载专用",
@@ -849,6 +863,40 @@ const proxyGroupsConfig = [
   },
   {
     ...groupBaseOption,
+    name: "📺 国外视频",
+    type: "select",
+    proxies: [
+      "🔰 模式选择",
+      "🚀 节点选择",
+      "🕊️ 落地节点",
+      "♻️ 延迟选优",
+      "🚑 故障转移",
+      "⚖️ 负载均衡(散列)",
+      "☁️ 负载均衡(轮询)",
+      "🎯 全局直连",
+    ],
+    "include-all": true,
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+  },
+  // {
+  //   ...groupBaseOption,
+  //   name: "🌍 国内媒体",
+  //   type: "select",
+  //   proxies: [
+  //     "🔰 模式选择",
+  //     "🚀 节点选择",
+  //     "🕊️ 落地节点",
+  //     "♻️ 延迟选优",
+  //     "🚑 故障转移",
+  //     "⚖️ 负载均衡(散列)",
+  //     "☁️ 负载均衡(轮询)",
+  //     "🎯 全局直连",
+  //   ],
+  //   "include-all": true,
+  //   icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+  // },
+  {
+    ...groupBaseOption,
     name: "🎶 TikTok",
     type: "select",
     proxies: [
@@ -898,40 +946,6 @@ const proxyGroupsConfig = [
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/twitter.svg",
   },
-  // {
-  //   ...groupBaseOption,
-  //   name: "🌍 国外媒体",
-  //   type: "select",
-  //   proxies: [
-  //     "🔰 模式选择",
-  //     "🚀 节点选择",
-  //     "🕊️ 落地节点",
-  //     "♻️ 延迟选优",
-  //     "🚑 故障转移",
-  //     "⚖️ 负载均衡(散列)",
-  //     "☁️ 负载均衡(轮询)",
-  //     "🎯 全局直连",
-  //   ],
-  //   "include-all": true,
-  //   icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
-  // },
-  // {
-  //   ...groupBaseOption,
-  //   name: "🌍 国内媒体",
-  //   type: "select",
-  //   proxies: [
-  //     "🔰 模式选择",
-  //     "🚀 节点选择",
-  //     "🕊️ 落地节点",
-  //     "♻️ 延迟选优",
-  //     "🚑 故障转移",
-  //     "⚖️ 负载均衡(散列)",
-  //     "☁️ 负载均衡(轮询)",
-  //     "🎯 全局直连",
-  //   ],
-  //   "include-all": true,
-  //   icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
-  // },
   {
     ...groupBaseOption,
     name: "📢 谷歌 FCM",
