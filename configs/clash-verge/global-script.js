@@ -299,6 +299,12 @@ const metaCubeXRuleProviders = {
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/googlefcm.yaml",
     path: "./ruleset/MetaCubeX/googlefcm.yaml",
   },
+  "google-gemini": {
+    ...ruleProviderCommon,
+    behavior: "classical",
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/google-gemini.yaml",
+    path: "./ruleset/MetaCubeX/google-gemini.yaml",
+  },
   "google-play": {
     ...ruleProviderCommon,
     behavior: "classical",
@@ -358,12 +364,6 @@ const metaCubeXRuleProviders = {
   //   behavior: "classical",
   //   url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/openai.yaml",
   //   path: "./ruleset/MetaCubeX/openai.yaml",
-  // },
-  // "google-gemini": {
-  //   ...ruleProviderCommon,
-  //   behavior: "classical",
-  //   url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/google-gemini.yaml",
-  //   path: "./ruleset/MetaCubeX/google-gemini.yaml",
   // },
   // anthropic: {
   //   ...ruleProviderCommon,
@@ -453,6 +453,13 @@ const customRules = [
 
   // 动漫
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
+
+  // 论坛
+  // "DOMAIN-SUFFIX,linux.do,🎯 全局直连"
+
+  // EDU
+  "DOMAIN-SUFFIX,sjsu.edu,EDU",
+  "DOMAIN-SUFFIX,okta.com,EDU",
 ];
 // ACL4SSR 规则集
 const ACL4SSRRules = [
@@ -482,6 +489,7 @@ const rules = [
   "RULE-SET,telegram,📲 电报消息",
   "RULE-SET,google-fcm,📢 谷歌 FCM",
   "RULE-SET,google-play,📢 谷歌 Play",
+  "RULE-SET,google-gemini,🤖 AI 平台",
   "RULE-SET,google,📢 谷歌服务",
   "RULE-SET,category-ads-all,❌ 全局拦截",
   "RULE-SET,category-ai-not-cn,🤖 AI 平台",
@@ -1064,6 +1072,23 @@ const proxyGroupsConfig = [
     ],
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/microsoft.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "EDU",
+    type: "select",
+    proxies: [
+      "🔰 模式选择",
+      "🚀 节点选择",
+      "🕊️ 落地节点",
+      "🎯 全局直连",
+      "♻️ 延迟选优",
+      "🚑 故障转移",
+      "⚖️ 负载均衡(散列)",
+      "☁️ 负载均衡(轮询)",
+    ],
+    "include-all": true,
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
   {
     ...groupBaseOption,
