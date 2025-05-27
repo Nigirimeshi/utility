@@ -463,6 +463,22 @@ const customRules = [
 
   // 日本
   "DOMAIN-SUFFIX,dmm.co.jp,日本节点",
+
+  // UK WiFi Call
+  // https://github.com/iniwex5/tools/blob/main/rules/UK-wifi-call.list
+  // 地区检测
+  "DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com,英国节点",
+  // 沃达丰
+  "DOMAIN-SUFFIX,epdg.epc.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
+  "DOMAIN-SUFFIX,ss.epdg.epc.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
+  "DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
+  "DOMAIN-SUFFIX,entsrv-uk.vodafone.com,英国节点",
+  "DOMAIN-SUFFIX,vuk-gto.prod.ondemandconnectivity.com,英国节点",
+  "IP-CIDR,88.82.0.0/19,英国节点",
+  // CMLinkUK EE
+  "IP-CIDR,46.68.0.0/17,英国节点",
+  // Giffgaff
+  "IP-CIDR,87.194.0.0/16,英国节点",
 ];
 // ACL4SSR 规则集
 const ACL4SSRRules = [
@@ -548,6 +564,34 @@ const landingNodeProxies = [
 ];
 const landingNodeNames = landingNodeProxies.map((p) => p.name);
 
+/**
+ * 合并多个值或数组，保持顺序并去重
+ * @param {...string|Array<string>} items - 要合并的值或数组
+ * @returns {Array<string>} 合并并去重后的数组
+ */
+function mergeUnique(...items) {
+  const seen = new Set();
+  const result = [];
+  
+  for (const item of items) {
+    if (Array.isArray(item)) {
+      // 处理数组
+      for (const element of item) {
+        if (element && !seen.has(element)) {
+          seen.add(element);
+          result.push(element);
+        }
+      }
+    } else if (item && !seen.has(item)) {
+      // 处理单个值
+      seen.add(item);
+      result.push(item);
+    }
+  }
+  
+  return result;
+}
+
 // 代理组通用配置
 const groupBaseOption = {
   interval: 0,
@@ -572,6 +616,7 @@ const groupBaseProxies = [
 // 代理组国家 proxies
 const groupCountryProxies = [
   "美国节点",
+  "英国节点",
   "日本节点",
   "新加坡节点",
   "台湾节点",
@@ -586,8 +631,8 @@ const proxyGroupsConfig = [
     name: "🔰 模式选择",
     type: "select",
     proxies: [
-      "🚀 节点选择", 
-      // "🕊️ 落地节点", 
+      "🚀 节点选择",
+      // "🕊️ 落地节点",
       "🎯 全局直连",
     ],
   },
@@ -651,6 +696,16 @@ const proxyGroupsConfig = [
     "include-all": true,
     "filter": "(?i)美国|us|united states|united states of america",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "英国节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)英国|uk|united kingdom",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/uk.svg",
   },
   {
     ...groupBaseOption,
@@ -726,10 +781,10 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🤖 AI 平台",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       ...groupCountryProxies,
       ...groupBaseProxies,
-    ],
+    ),
     "include-all": true,
     "exclude-filter": "(?i)港|hk|hongkong|hong kong|俄|ru|russia|澳|macao",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
@@ -738,10 +793,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎮 游戏",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "香港节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/steam.svg",
   },
@@ -749,11 +805,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎮 游戏平台下载",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
@@ -761,11 +817,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎮 Steam",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "香港节点",
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/steam.svg",
   },
@@ -773,11 +830,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎮 Epic",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/epic.svg",
   },
@@ -785,11 +842,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "👇 下载专用",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
@@ -797,10 +854,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎬 Emby",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/embedded.svg",
   },
@@ -808,10 +866,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🔞 Porn",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
@@ -819,10 +878,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🅿️ PikPak",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "香港节点",
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://cdn.jsdelivr.net/gh/Siriling/my-icons@main/dist/icon/Pikpak.png",
   },
@@ -830,11 +891,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🅿️ PikPak 下载",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://cdn.jsdelivr.net/gh/Siriling/my-icons@main/dist/icon/Pikpak.png",
   },
@@ -842,10 +904,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📲 电报消息",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/telegram.svg",
   },
@@ -853,10 +916,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📹 YouTube",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
   },
@@ -864,10 +928,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📹 Netflix",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "香港节点",
+      "低倍率节点",
       ...groupCountryProxies,
       ...groupBaseProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/netflix.svg",
   },
@@ -875,10 +941,10 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📺 巴哈姆特",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "台湾节点",
       ...groupBaseProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://i2.bahamut.com.tw/anime/baha_s.png",
   },
@@ -886,11 +952,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📺 哔哩哔哩",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://raw.githubusercontent.com/free-icons/free-icons/refs/heads/master/svgs/brands-bilibili.svg",
   },
@@ -898,10 +965,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📺 国外视频",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
@@ -909,10 +977,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎶 TikTok",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/tiktok.svg",
   },
@@ -920,10 +989,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🎧 Spotify",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
+      "香港节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://raw.githubusercontent.com/free-icons/free-icons/refs/heads/master/svgs/brands-spotify.svg",
   },
@@ -931,10 +1002,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📱 社交媒体",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "低倍率节点",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/twitter.svg",
   },
@@ -942,10 +1014,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📢 谷歌 FCM",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "美国节点",
       ...groupCountryProxies,
       ...groupBaseProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
   },
@@ -953,10 +1026,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📢 谷歌 Play",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "美国节点",
       ...groupCountryProxies,
       ...groupBaseProxies
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google_play.svg",
   },
@@ -964,10 +1038,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "📢 谷歌服务",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "美国节点",
       ...groupCountryProxies,
       ...groupBaseProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
   },
@@ -975,11 +1050,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "🍎 苹果服务",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg",
   },
@@ -987,11 +1062,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "Ⓜ️ 微软 Bing",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/bing.svg",
   },
@@ -999,11 +1074,11 @@ const proxyGroupsConfig = [
   //   ...groupBaseOption,
   //   name: "Ⓜ️ 微软云盘",
   //   type: "select",
-  //   proxies: [
+  //   proxies: mergeUnique(
   //     "🎯 全局直连",
   //     ...groupBaseProxies,
   //     ...groupCountryProxies,
-  //   ],
+  //   ),
   //   "include-all": true,
   //   icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/onedrive.svg",
   // },
@@ -1011,11 +1086,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "Ⓜ️ 微软服务",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/microsoft.svg",
   },
@@ -1023,10 +1098,11 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "EDU",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
+      "美国节点",
       ...groupCountryProxies,
       ...groupBaseProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
@@ -1053,11 +1129,11 @@ const proxyGroupsConfig = [
     name: "🐬 自定义直连",
     type: "select",
     "include-all": true,
-    proxies: [
+    proxies: mergeUnique(
       "🎯 全局直连",
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
   },
   {
@@ -1065,20 +1141,20 @@ const proxyGroupsConfig = [
     name: "🐳 自定义代理",
     type: "select",
     "include-all": true,
-    proxies: [
+    proxies: mergeUnique(
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/openwrt.svg",
   },
   {
     ...groupBaseOption,
     name: "🐟 漏网之鱼",
     type: "select",
-    proxies: [
+    proxies: mergeUnique(
       ...groupBaseProxies,
       ...groupCountryProxies,
-    ],
+    ),
     "include-all": true,
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg",
   },
