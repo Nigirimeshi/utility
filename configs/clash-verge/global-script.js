@@ -444,15 +444,15 @@ const customRules = [
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$,🅿️ PikPak 下载",
 
+  // 游戏下载 cache10-hkg1.steamcontent.com
+  "DOMAIN-REGEX,^cache[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
+
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
   // Nikke
   "PROCESS-NAME,nikke.exe,🎮 游戏",
   "PROCESS-NAME,nikke_launcher.exe,🎮 游戏",
-
-  // 游戏下载
-  "DOMAIN-REGEX,^cache\d+-[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
 
   // 动漫
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
