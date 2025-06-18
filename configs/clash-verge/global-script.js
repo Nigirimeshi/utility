@@ -454,11 +454,14 @@ const customRules = [
   "PROCESS-NAME,nikke.exe,🎮 游戏",
   "PROCESS-NAME,nikke_launcher.exe,🎮 游戏",
 
+  // Hell Divers 2
+  "PROCESS-NAME,helldivers2.exe,🎯 全局直连,no-resolve",
+
   // 动漫
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
 
   // 论坛
-  // "DOMAIN-SUFFIX,linux.do,🎯 全局直连"
+  "DOMAIN-SUFFIX,linux.do,🎯 全局直连",
 
   // EDU
   "DOMAIN-SUFFIX,sjsu.edu,EDU",
