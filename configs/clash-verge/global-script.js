@@ -447,6 +447,9 @@ const customRules = [
   // 游戏下载 cache10-hkg1.steamcontent.com
   "DOMAIN-REGEX,^cache[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
 
+  // TapTap
+  "DOMAIN-SUFFIX,taptap.io,🎮 游戏平台下载",
+
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
