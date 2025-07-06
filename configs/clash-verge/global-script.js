@@ -783,7 +783,7 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)低倍率|low|low rate",
+    "filter": "(?i)低倍率|low|low rate|0\\.\\dx",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
   },
   {
