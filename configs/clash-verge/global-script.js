@@ -448,7 +448,7 @@ const customRules = [
   "DOMAIN-REGEX,^cache[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
 
   // torrent
-  "DOMAIN-SUFFIX,downloadtorrentfile.com,美国节点",
+  "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
 
   // TapTap
   "DOMAIN-SUFFIX,taptap.io,🎮 游戏平台下载",
@@ -629,12 +629,19 @@ const groupBaseProxies = [
 const groupCountryProxies = [
   "美国节点",
   "英国节点",
-  "日本节点",
+  "加拿大节点",
+  "澳大利亚节点",
+  "德国节点",
+  "俄罗斯节点",
+  "南极节点",
   "新加坡节点",
+  "日本节点",
   "台湾节点",
   "香港节点",
   "澳门节点",
   "韩国节点",
+  "印度节点",
+  "菲律宾节点",
 ];
 // 代理组配置
 const proxyGroupsConfig = [
@@ -706,7 +713,7 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)美国|us|united states|united states of america",
+    "filter": "(?i)\\b(美国|us|united states|united states of america)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
   },
   {
@@ -721,13 +728,52 @@ const proxyGroupsConfig = [
   },
   {
     ...groupBaseOption,
-    name: "日本节点",
+    name: "加拿大节点",
     type: "select",
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)日本|jp|japan",
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
+    "filter": "(?i)\\b(加拿大|ca|canada)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ca.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "澳大利亚节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(澳大利亚|au|australia)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/au.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "德国节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(德国|de|germany)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/de.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "俄罗斯节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(俄罗斯|ru|russia)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ru.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "南极节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(南极|南极洲|antarctica|antarctica)\\b",
   },
   {
     ...groupBaseOption,
@@ -736,8 +782,18 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)新加坡|sg|singapore",
+    "filter": "(?i)\\b(新加坡|sg|singapore)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "日本节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(日本|jp|japan)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
   },
   {
     ...groupBaseOption,
@@ -746,7 +802,7 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)台湾|tw|taiwan",
+    "filter": "(?i)\\b(台湾|tw|taiwan)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/tw.svg",
   },
   {
@@ -756,7 +812,7 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)香港|hk|hongkong|hong kong",
+    "filter": "(?i)\\b(香港|hk|hongkong|hong kong)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/hk.svg",
   },
   {
@@ -766,7 +822,7 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)澳门|macao|macau",
+    "filter": "(?i)\\b(澳门|macao|macau)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/hk.svg",
   },
   {
@@ -776,8 +832,28 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)韩国|kr|korea",
+    "filter": "(?i)\\b(韩国|kr|korea)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/kr.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "印度节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(印度|in|india)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/in.svg",
+  },
+  {
+    ...groupBaseOption,
+    name: "菲律宾节点",
+    type: "select",
+    proxies: [
+    ],
+    "include-all": true,
+    "filter": "(?i)\\b(菲律宾|ph|philippines)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/ph.svg",
   },
   {
     ...groupBaseOption,
