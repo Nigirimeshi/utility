@@ -447,6 +447,9 @@ const customRules = [
   // 游戏下载 cache10-hkg1.steamcontent.com
   "DOMAIN-REGEX,^cache[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
 
+  // torrent
+  "DOMAIN-SUFFIX,downloadtorrentfile.com,美国节点",
+
   // TapTap
   "DOMAIN-SUFFIX,taptap.io,🎮 游戏平台下载",
 
@@ -581,7 +584,7 @@ const landingNodeNames = landingNodeProxies.map((p) => p.name);
 function mergeUnique(...items) {
   const seen = new Set();
   const result = [];
-  
+
   for (const item of items) {
     if (Array.isArray(item)) {
       // 处理数组
@@ -597,7 +600,7 @@ function mergeUnique(...items) {
       result.push(item);
     }
   }
-  
+
   return result;
 }
 
@@ -713,7 +716,7 @@ const proxyGroupsConfig = [
     proxies: [
     ],
     "include-all": true,
-    "filter": "(?i)英国|uk|united kingdom",
+    "filter": "(?i)\\b(英国|uk|united kingdom)\\b",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/uk.svg",
   },
   {
@@ -780,8 +783,12 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "低倍率节点",
     type: "select",
-    proxies: [
-    ],
+    proxies: mergeUnique(
+      "🔰 模式选择",
+      "🚀 节点选择",
+      "🎯 全局直连",
+      ...groupCountryProxies,
+    ),
     "include-all": true,
     "filter": "(?i)低倍率|low|low rate|0\\.\\dx",
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
