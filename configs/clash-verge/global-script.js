@@ -287,6 +287,12 @@ const metaCubeXRuleProviders = {
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/epicgames.yaml",
     path: "./ruleset/MetaCubeX/epicgames.yaml",
   },
+  ubisoft: {
+    ...ruleProviderCommon,
+    behavior: "classical",
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/ubisoft.yaml",
+    path: "./ruleset/MetaCubeX/ubisoft.yaml",
+  },
   google: {
     ...ruleProviderCommon,
     behavior: "classical",
@@ -446,22 +452,22 @@ const customRules = [
 
   // 游戏下载 cache10-hkg1.steamcontent.com
   "DOMAIN-REGEX,^cache[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
-
-  // torrent
-  "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
-
   // TapTap
   "DOMAIN-SUFFIX,taptap.io,🎮 游戏平台下载",
-
-  // Telegram
-  "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
   // Nikke
   "PROCESS-NAME,nikke.exe,🎮 游戏",
   "PROCESS-NAME,nikke_launcher.exe,🎮 游戏",
 
   // Hell Divers 2
-  "PROCESS-NAME,helldivers2.exe,🎯 全局直连,no-resolve",
+  // "PROCESS-NAME,helldivers2.exe,🎯 全局直连,no-resolve",
+  "PROCESS-NAME,helldivers2.exe,🎮 游戏",
+
+  // torrent
+  "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
+
+  // Telegram
+  "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
   // 动漫
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
@@ -530,6 +536,7 @@ const rules = [
   "RULE-SET,category-game-platforms-download,🎮 游戏平台下载",
   "RULE-SET,steam,🎮 Steam",
   "RULE-SET,epicgames,🎮 Epic",
+  "RULE-SET,ubisoft,🎮 Ubisoft",
   // "RULE-SET,category-games-cn,🎯 全局直连",
   // "RULE-SET,category-games,🎮 游戏",
   "RULE-SET,category-porn,🔞 Porn",
@@ -724,7 +731,7 @@ const proxyGroupsConfig = [
     ],
     "include-all": true,
     "filter": "(?i)\\b(英国|uk|united kingdom)\\b",
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/uk.svg",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/gb.svg",
   },
   {
     ...groupBaseOption,
@@ -774,6 +781,7 @@ const proxyGroupsConfig = [
     ],
     "include-all": true,
     "filter": "(?i)\\b(南极|南极洲|antarctica|antarctica)\\b",
+    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/aq.svg",
   },
   {
     ...groupBaseOption,
@@ -891,7 +899,7 @@ const proxyGroupsConfig = [
       ...groupCountryProxies,
     ),
     "include-all": true,
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/steam.svg",
+    icon: "https://img.icons8.com/?size=100&id=11907&format=png&color=000000",
   },
   {
     ...groupBaseOption,
@@ -903,7 +911,7 @@ const proxyGroupsConfig = [
       ...groupCountryProxies,
     ),
     "include-all": true,
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+    icon: "https://img.icons8.com/?size=100&id=11907&format=png&color=000000",
   },
   {
     ...groupBaseOption,
@@ -932,6 +940,18 @@ const proxyGroupsConfig = [
   },
   {
     ...groupBaseOption,
+    name: "🎮 Ubisoft",
+    type: "select",
+    proxies: mergeUnique(
+      "🎯 全局直连",
+      ...groupBaseProxies,
+      ...groupCountryProxies,
+    ),
+    "include-all": true,
+    icon: "https://img.icons8.com/?size=100&id=kRIYZ4mhfdpU&format=png&color=000000",
+  },
+  {
+    ...groupBaseOption,
     name: "👇 下载专用",
     type: "select",
     proxies: mergeUnique(
@@ -940,7 +960,7 @@ const proxyGroupsConfig = [
       ...groupCountryProxies,
     ),
     "include-all": true,
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+    icon: "https://img.icons8.com/?size=100&id=12071&format=png&color=000000",
   },
   {
     ...groupBaseOption,
@@ -964,7 +984,7 @@ const proxyGroupsConfig = [
       ...groupCountryProxies,
     ),
     "include-all": true,
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+    icon: "https://img.icons8.com/?size=100&id=ZodT7FGIa1cj&format=png&color=000000",
   },
   {
     ...groupBaseOption,
@@ -1196,7 +1216,7 @@ const proxyGroupsConfig = [
       ...groupBaseProxies,
     ),
     "include-all": true,
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+    // icon: "https://icons8.com/icon/nbsqAaIAMGig/student-male",
   },
   {
     ...groupBaseOption,
@@ -1207,7 +1227,7 @@ const proxyGroupsConfig = [
       "🚀 节点选择",
     ],
     "include-all": true,
-    icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg",
+    // icon: "https://icons8.com/icon/y65K0bMdZYmA/direct",
   },
   {
     ...groupBaseOption,
