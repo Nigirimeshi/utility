@@ -469,6 +469,9 @@ const customRules = [
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
+  // Github
+  "AND,((DOMAIN-SUFFIX,github.com),(DST-PORT,22,DIRECT)),🎯 全局直连",
+
   // 动漫
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
 
