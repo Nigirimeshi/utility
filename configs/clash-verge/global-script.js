@@ -458,6 +458,8 @@ const customRules = [
   // Nikke
   "PROCESS-NAME,nikke.exe,🎮 游戏",
   "PROCESS-NAME,nikke_launcher.exe,🎮 游戏",
+  "DOMAIN-SUFFIX,intlgame.com,🎮 游戏",
+  "DOMAIN,android.crashsight.wetest.net,🎮 游戏",
 
   // Hell Divers 2
   // "PROCESS-NAME,helldivers2.exe,🎯 全局直连,no-resolve",
