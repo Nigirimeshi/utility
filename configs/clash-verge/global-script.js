@@ -452,8 +452,9 @@ const customRules = [
 
   // 游戏下载 cache10-hkg1.steamcontent.com
   "DOMAIN-REGEX,^cache[a-z0-9-]+\.steamcontent\.com$,🎮 游戏平台下载",
+
   // TapTap
-  "DOMAIN-SUFFIX,taptap.io,🎮 游戏平台下载",
+  "DOMAIN-SUFFIX,taptap.io,🎮 游戏",
 
   // Nikke
   "PROCESS-NAME,nikke.exe,🎮 游戏",
@@ -474,8 +475,12 @@ const customRules = [
   // Github
   "AND,((DOMAIN-SUFFIX,github.com),(DST-PORT,22,DIRECT)),🎯 全局直连",
 
-  // 动漫
+  // 梯子
+  "DOMAIN-SUFFIX,ouonetwork.com,🎯 全局直连",
+
+  // 视频
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
+  "DOMAIN-SUFFIX,libvio.cloud,🎯 全局直连",
 
   // 论坛
   "DOMAIN-SUFFIX,linux.do,🎯 全局直连",
