@@ -1,5 +1,11 @@
 // 默认 DNS 服务器列表
-const defaultNameservers = ["223.5.5.5", "1.2.4.8"];
+const defaultNameservers = [
+  "223.5.5.5", // 阿里
+  "119.29.29.29", // 腾讯
+  "114.114.114.114", // 114
+  // "180.184.1.1", // 字节跳动
+  // "180.76.76.76", // 百度
+];
 
 // 国内 DNS 服务器
 const domesticNameservers = [
@@ -466,6 +472,9 @@ const customRules = [
   // "PROCESS-NAME,helldivers2.exe,🎯 全局直连,no-resolve",
   "PROCESS-NAME,helldivers2.exe,🎮 游戏",
 
+  // The First Descendant
+  "PROCESS-NAME,M1-Win64-Shipping.exe,🎮 游戏",
+
   // torrent
   "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
 
@@ -481,9 +490,10 @@ const customRules = [
   // 视频
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
   "DOMAIN-SUFFIX,libvio.cloud,🎯 全局直连",
+  "DOMAIN-SUFFIX,ouonet.org,🎯 全局直连",
 
   // 论坛
-  "DOMAIN-SUFFIX,linux.do,🎯 全局直连",
+  "DOMAIN-SUFFIX,linux.do,🔰 模式选择",
 
   // EDU
   "DOMAIN-SUFFIX,sjsu.edu,EDU",
