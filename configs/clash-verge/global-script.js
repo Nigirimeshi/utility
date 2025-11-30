@@ -481,6 +481,9 @@ const customRules = [
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
+  // Antigravity
+  "PROCESS-NAME,Antigravity.exe,📢 谷歌服务",
+
   // Github
   "AND,((DOMAIN-SUFFIX,github.com),(DST-PORT,22,DIRECT)),🎯 全局直连",
 
@@ -736,7 +739,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "美国节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -746,7 +749,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "英国节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -756,7 +759,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "加拿大节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -766,7 +769,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "澳大利亚节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -776,7 +779,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "德国节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -786,7 +789,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "俄罗斯节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -796,7 +799,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "南极节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -806,7 +809,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "新加坡节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -816,7 +819,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "日本节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -826,7 +829,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "台湾节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -836,7 +839,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "香港节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -846,7 +849,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "澳门节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -856,7 +859,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "韩国节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -866,7 +869,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "印度节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
@@ -876,7 +879,7 @@ const proxyGroupsConfig = [
   {
     ...groupBaseOption,
     name: "菲律宾节点",
-    type: "select",
+    type: "url-test",
     proxies: [
     ],
     "include-all": true,
