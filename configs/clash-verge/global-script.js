@@ -10,12 +10,15 @@ const defaultNameservers = [
 // 国内 DNS 服务器
 const domesticNameservers = [
   "https://223.5.5.5/dns-query", // 阿里
-  "https://doh.pub/dns-query", // 腾讯
+  "https://1.12.12.12/dns-query", // 腾讯
+  // "223.5.5.5", // 阿里
+  // "119.29.29.29", // 腾讯
+  "114.114.114.114", // 114
 ];
 
 // 国外 DNS 服务器
 const foreignNameservers = [
-  "https://cloudflare-dns.com/dns-query", // CloudflareDNS
+  // "https://cloudflare-dns.com/dns-query", // CloudflareDNS
   "https://77.88.8.8/dns-query", // YandexDNS
   "https://8.8.4.4/dns-query#ecs=1.1.1.1/24&ecs-override=true", // GoogleDNS
   "https://208.67.222.222/dns-query#ecs=1.1.1.1/24&ecs-override=true", // OpenDNS
@@ -494,6 +497,9 @@ const customRules = [
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
   "DOMAIN-SUFFIX,libvio.cloud,🎯 全局直连",
   "DOMAIN-SUFFIX,ouonet.org,🎯 全局直连",
+  "DOMAIN,smart.uhdnow.com,🎯 全局直连",
+  "DOMAIN,smart2.uhdnow.com,🎯 全局直连",
+  "DOMAIN,mlc.once.im,🎯 全局直连",
 
   // 论坛
   "DOMAIN-SUFFIX,linux.do,🔰 模式选择",
