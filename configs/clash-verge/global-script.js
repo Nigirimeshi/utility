@@ -1,28 +1,26 @@
 // 默认 DNS 服务器列表
 const defaultNameservers = [
-  "223.5.5.5", // 阿里
-  "119.29.29.29", // 腾讯
-  "114.114.114.114", // 114
-  // "180.184.1.1", // 字节跳动
-  // "180.76.76.76", // 百度
+  "tls://223.5.5.5", // 阿里
+  "tls://119.29.29.29", // 腾讯
+  // "114.114.114.114", // 114
 ];
 
 // 国内 DNS 服务器
 const domesticNameservers = [
   "https://223.5.5.5/dns-query", // 阿里
-  "https://1.12.12.12/dns-query", // 腾讯
+  "https://119.29.29.29/dns-query", // 腾讯
   // "223.5.5.5", // 阿里
   // "119.29.29.29", // 腾讯
-  "114.114.114.114", // 114
+  // "114.114.114.114", // 114
 ];
 
 // 国外 DNS 服务器
 const foreignNameservers = [
-  // "https://cloudflare-dns.com/dns-query", // CloudflareDNS
-  "https://77.88.8.8/dns-query", // YandexDNS
-  "https://8.8.4.4/dns-query#ecs=1.1.1.1/24&ecs-override=true", // GoogleDNS
-  "https://208.67.222.222/dns-query#ecs=1.1.1.1/24&ecs-override=true", // OpenDNS
-  "https://9.9.9.9/dns-query", // Quad9DNS
+  "https://8.8.8.8/dns-query", // GoogleDNS
+  "https://1.1.1.1/dns-query", // CloudflareDNS
+  // "https://77.88.8.8/dns-query", // YandexDNS
+  // "https://208.67.222.222/dns-query#ecs=1.1.1.1/24&ecs-override=true", // OpenDNS
+  // "https://9.9.9.9/dns-query", // Quad9DNS
 ];
 
 // DNS 配置
@@ -35,11 +33,13 @@ const dnsConfig = {
   // dns 连接遵守路由规则，需配置 proxy-server-nameserver
   "respect-rules": true,
   // 是否查询系统 hosts，默认 true
-  "use-system-hosts": false,
+  "use-system-hosts": true,
   "cache-algorithm": "arc",
   "enhanced-mode": "fake-ip",
   "fake-ip-range": "198.18.0.1/16",
   "fake-ip-filter": [
+    "geosite:private",
+    "geosite:connectivity-check",
     // 本地主机/设备
     "+.lan",
     "+.local",
@@ -57,10 +57,10 @@ const dnsConfig = {
   // 用于解析 DNS 服务器的域名, 必须为 IP, 可为加密 DNS
   "default-nameserver": [...defaultNameservers],
   // 默认的域名解析服务器, 如不配置 fallback/proxy-server-nameserver, 则所有域名都由 nameserver 解析
-  nameserver: [...foreignNameservers],
+  "nameserver": [...foreignNameservers],
   // 代理节点域名解析服务器，仅用于解析代理节点的域名，如果不填则遵循 nameserver-policy、nameserver 和 fallback 的配置
   "proxy-server-nameserver": [...domesticNameservers],
-  // 用于 direct 出口域名解析的 DNS 服务器，如果不填则遵循 nameserver-policy、nameserver 和 fallback的配置
+  // 用于 direct 出口域名解析的 DNS 服务器，如果不填则遵循 nameserver-policy、nameserver 和 fallback 的配置
   "direct-nameserver": [...domesticNameservers],
   // 是否遵循 nameserver-policy，默认为不遵守，仅当 direct-nameserver 不为空时生效
   "direct-nameserver-follow-policy": false,
