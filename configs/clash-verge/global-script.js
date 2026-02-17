@@ -503,6 +503,10 @@ const customRules = [
 
   // 论坛
   "DOMAIN-SUFFIX,linux.do,🔰 模式选择",
+  "DOMAIN-SUFFIX,forum.bambulab.com,🔰 模式选择",
+
+  // 博客
+  "DOMAIN-SUFFIX,duangks.com,🔰 模式选择",
 
   // EDU
   "DOMAIN-SUFFIX,sjsu.edu,EDU",
