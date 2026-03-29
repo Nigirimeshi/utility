@@ -67,8 +67,10 @@ const dnsConfig = {
   // 指定域名查询的解析服务器，可使用 geosite, 优先于 nameserver/fallback 查询
   "nameserver-policy": {
     "geosite:cn": domesticNameservers,
-    // mypikpak.com 域名使用国内 DNS
+    // pikpak域名使用国内 DNS
     "+.mypikpak.com": domesticNameservers,
+    "+.mypikpak.net": domesticNameservers,
+    "+.dl.pikpak.io": domesticNameservers,
   },
 };
 
@@ -456,6 +458,7 @@ const ruleProviders = {
 const customRules = [
   // PikPak 下载
   // 示例：dl-z01a-0053.mypikpak.com
+  "DOMAIN-SUFFIX,dl.pikpak.io,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$,🅿️ PikPak 下载",
 
