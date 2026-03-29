@@ -69,8 +69,8 @@ const dnsConfig = {
     "geosite:cn": domesticNameservers,
     // pikpak域名使用国内 DNS
     "+.mypikpak.com": domesticNameservers,
-    "+.mypikpak.net": domesticNameservers,
-    "+.dl.pikpak.io": domesticNameservers,
+    // "+.mypikpak.net": domesticNameservers,
+    // "+.dl.pikpak.io": domesticNameservers,
   },
 };
 
