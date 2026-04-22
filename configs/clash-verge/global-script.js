@@ -456,6 +456,9 @@ const ruleProviders = {
 
 // 自定义规则
 const customRules = [
+  // 临时
+  "DOMAIN-SUFFIX,ftp.hp.com,🔰 模式选择",
+
   // PikPak 下载
   // 示例：dl-z01a-0053.mypikpak.com
   "DOMAIN-SUFFIX,dl.pikpak.io,🅿️ PikPak 下载",
@@ -483,6 +486,9 @@ const customRules = [
 
   // torrent
   "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
+
+  // hyper3D
+  "DOMAIN-SUFFIX,hyper3d.com,🔰 模式选择",
 
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
