@@ -490,6 +490,9 @@ const customRules = [
   // hyper3D
   "DOMAIN-SUFFIX,hyper3d.com,🔰 模式选择",
 
+  // Makeronline
+  "DOMAIN-SUFFIX,makeronline.com,🔰 模式选择",
+
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
 
