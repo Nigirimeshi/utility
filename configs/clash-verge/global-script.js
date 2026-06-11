@@ -491,7 +491,7 @@ const customRules = [
   "DOMAIN-SUFFIX,hyper3d.com,🔰 模式选择",
 
   // Makeronline
-  "DOMAIN-SUFFIX,makeronline.com,🔰 模式选择",
+  //"DOMAIN-SUFFIX,makeronline.com,🔰 模式选择",
 
   // Telegram
   "PROCESS-NAME,Telegram.exe,📲 电报消息",
@@ -504,6 +504,7 @@ const customRules = [
 
   // 梯子
   "DOMAIN-SUFFIX,ouonetwork.com,🎯 全局直连",
+  "DOMAIN-SUFFIX,yyssr.org,低倍率节点",
 
   // 视频
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
