@@ -474,6 +474,7 @@ const customRules = [
   // Nikke
   "PROCESS-NAME,nikke.exe,🎮 游戏",
   "PROCESS-NAME,nikke_launcher.exe,🎮 游戏",
+  "DOMAIN-SUFFIX,nikke-kr.com,🎮 游戏",
   "DOMAIN-SUFFIX,intlgame.com,🎮 游戏",
   "DOMAIN,android.crashsight.wetest.net,🎮 游戏",
 
@@ -505,6 +506,7 @@ const customRules = [
   // 梯子
   "DOMAIN-SUFFIX,ouonetwork.com,🎯 全局直连",
   "DOMAIN-SUFFIX,yyssr.org,低倍率节点",
+  "DOMAIN-SUFFIX,fcapp.run,🔰 模式选择",
 
   // 视频
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
