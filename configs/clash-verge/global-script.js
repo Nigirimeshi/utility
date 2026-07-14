@@ -490,6 +490,12 @@ const customRules = [
   // torrent
   "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
 
+  // AI Model
+  "DOMAIN-SUFFIX,huggingface.co,低倍率节点",
+  // "DOMAIN-SUFFIX,huggingface.co,🎯 全局直连",
+  "DOMAIN-SUFFIX,hf-mirror.com,🎯 全局直连",
+  "DOMAIN-SUFFIX,xethub.hf.co,🎯 全局直连",
+
   // hyper3D
   "DOMAIN-SUFFIX,hyper3d.com,🔰 模式选择",
 
@@ -524,6 +530,9 @@ const customRules = [
 
   // 博客
   "DOMAIN-SUFFIX,duangks.com,🔰 模式选择",
+
+  // kaspersky
+  "DOMAIN-SUFFIX,kaspersky.com,🎯 全局直连",
 
   // EDU
   "DOMAIN-SUFFIX,sjsu.edu,EDU",
