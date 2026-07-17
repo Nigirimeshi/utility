@@ -1333,6 +1333,7 @@ const proxyGroupsConfig = [
 
 // 多订阅合并，这里添加额外的地址
 const proxyProviders = {
+  /* example
   p1: {
     type: "http", // 订阅链接
     url: "https://google.com",
@@ -1342,6 +1343,7 @@ const proxyProviders = {
       "additional-prefix": "p1 |", // 节点名称前缀 p1，用于区别机场节点
     },
   },
+  */
   // 其他订阅地址
 };
 
