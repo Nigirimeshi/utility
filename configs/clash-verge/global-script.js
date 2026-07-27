@@ -2,7 +2,7 @@
 const defaultNameservers = [
   "tls://223.5.5.5", // 阿里
   "tls://119.29.29.29", // 腾讯
-  // "114.114.114.114", // 114
+  //"114.114.114.114", // 114
 ];
 
 // 国内 DNS 服务器
@@ -11,7 +11,7 @@ const domesticNameservers = [
   "https://119.29.29.29/dns-query", // 腾讯
   // "223.5.5.5", // 阿里
   // "119.29.29.29", // 腾讯
-  // "114.114.114.114", // 114
+  //"114.114.114.114", // 114
 ];
 
 // 国外 DNS 服务器
@@ -461,6 +461,12 @@ const customRules = [
 
   // PikPak 下载
   // 示例：dl-z01a-0053.mypikpak.com
+  "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-SUFFIX,dl.pikpak.io)),🎯 全局直连",
+  "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$)),🎯 全局直连",
+  "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$)),🎯 全局直连",
+  "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-SUFFIX,dl.pikpak.io)),🎯 全局直连",
+  "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$)),🎯 全局直连",
+  "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$)),🎯 全局直连",
   "DOMAIN-SUFFIX,dl.pikpak.io,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$,🅿️ PikPak 下载",
@@ -495,6 +501,7 @@ const customRules = [
   // "DOMAIN-SUFFIX,huggingface.co,🎯 全局直连",
   "DOMAIN-SUFFIX,hf-mirror.com,🎯 全局直连",
   "DOMAIN-SUFFIX,xethub.hf.co,🎯 全局直连",
+  "DOMAIN-SUFFIX,aws.cdn.hf.co,🎯 全局直连",
 
   // hyper3D
   "DOMAIN-SUFFIX,hyper3d.com,🔰 模式选择",
@@ -1333,7 +1340,7 @@ const proxyGroupsConfig = [
 
 // 多订阅合并，这里添加额外的地址
 const proxyProviders = {
-  /* example
+  /*
   p1: {
     type: "http", // 订阅链接
     url: "https://google.com",
