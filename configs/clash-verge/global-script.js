@@ -461,12 +461,15 @@ const customRules = [
 
   // PikPak 下载
   // 示例：dl-z01a-0053.mypikpak.com
+  "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-SUFFIX,dl.pikpak.site)),🎯 全局直连",
   "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-SUFFIX,dl.pikpak.io)),🎯 全局直连",
   "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$)),🎯 全局直连",
   "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$)),🎯 全局直连",
+  "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-SUFFIX,dl.pikpak.site)),🎯 全局直连",
   "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-SUFFIX,dl.pikpak.io)),🎯 全局直连",
   "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$)),🎯 全局直连",
   "AND,((PROCESS-NAME,DownloadServer.exe),(DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$)),🎯 全局直连",
+  "DOMAIN-SUFFIX,dl.pikpak.site,🅿️ PikPak 下载",
   "DOMAIN-SUFFIX,dl.pikpak.io,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.com$,🅿️ PikPak 下载",
   "DOMAIN-REGEX,^dl-[a-z0-9-]+\.mypikpak\.net$,🅿️ PikPak 下载",
