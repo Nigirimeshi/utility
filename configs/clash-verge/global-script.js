@@ -527,6 +527,7 @@ const customRules = [
   "DOMAIN-SUFFIX,fcapp.run,🔰 模式选择",
 
   // 视频
+  "DOMAIN-SUFFIX,ddys.app,🎯 全局直连",
   "DOMAIN-SUFFIX,dmhy.org,📺 国外视频",
   "DOMAIN-SUFFIX,libvio.cloud,🎯 全局直连",
   "DOMAIN-SUFFIX,ouonet.org,🎯 全局直连",
