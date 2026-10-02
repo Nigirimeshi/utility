@@ -98,12 +98,12 @@ const loyalsoldierRuleProviders = {
     path: "./ruleset/loyalsoldier/proxy.yaml",
   },
   // 广告域名列表
-  reject: {
-    ...ruleProviderCommon,
-    behavior: "domain",
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt",
-    path: "./ruleset/loyalsoldier/reject.yaml",
-  },
+  // reject: {
+  //   ...ruleProviderCommon,
+  //   behavior: "domain",
+  //   url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt",
+  //   path: "./ruleset/loyalsoldier/reject.yaml",
+  // },
   // 私有网络专用域名列表
   private: {
     ...ruleProviderCommon,
@@ -178,12 +178,12 @@ const loyalsoldierRuleProviders = {
 // MetaCubeX 规则集
 // https://github.com/MetaCubeX/meta-rules-dat/tree/meta/geo/geosite/classical
 const metaCubeXRuleProviders = {
-  "category-ads-all": {
-    ...ruleProviderCommon,
-    behavior: "classical",
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/category-ads-all.yaml",
-    path: "./ruleset/MetaCubeX/category-ads-all.yaml",
-  },
+  // "category-ads-all": {
+  //   ...ruleProviderCommon,
+  //   behavior: "classical",
+  //   url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/category-ads-all.yaml",
+  //   path: "./ruleset/MetaCubeX/category-ads-all.yaml",
+  // },
   "category-ai-not-cn": {
     ...ruleProviderCommon,
     behavior: "classical",
@@ -459,9 +459,6 @@ const customRules = [
   // 临时
   "DOMAIN-SUFFIX,ftp.hp.com,🔰 模式选择",
 
-  // EDU
-  "DOMAIN-SUFFIX,sheerid.com,🔰 模式选择",
-
   // PikPak 下载
   // 示例：dl-z01a-0053.mypikpak.com
   "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-SUFFIX,dl.pikpak.site)),🎯 全局直连",
@@ -498,6 +495,9 @@ const customRules = [
 
   // The First Descendant
   "PROCESS-NAME,M1-Win64-Shipping.exe,🎮 游戏",
+
+  // Bambulab
+  "PROCESS-NAME,bambu-studio.exe,🎯 全局直连",
 
   // torrent
   "DOMAIN-SUFFIX,downloadtorrentfile.com,南极节点",
@@ -558,18 +558,18 @@ const customRules = [
   // UK WiFi Call
   // https://github.com/iniwex5/tools/blob/main/rules/UK-wifi-call.list
   // 地区检测
-  "DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com,英国节点",
+  // "DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com,英国节点",
   // 沃达丰
-  "DOMAIN-SUFFIX,epdg.epc.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
-  "DOMAIN-SUFFIX,ss.epdg.epc.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
-  "DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
-  "DOMAIN-SUFFIX,entsrv-uk.vodafone.com,英国节点",
-  "DOMAIN-SUFFIX,vuk-gto.prod.ondemandconnectivity.com,英国节点",
-  "IP-CIDR,88.82.0.0/19,英国节点",
+  // "DOMAIN-SUFFIX,epdg.epc.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
+  // "DOMAIN-SUFFIX,ss.epdg.epc.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
+  // "DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc015.mcc234.pub.3gppnetwork.org,英国节点",
+  // "DOMAIN-SUFFIX,entsrv-uk.vodafone.com,英国节点",
+  // "DOMAIN-SUFFIX,vuk-gto.prod.ondemandconnectivity.com,英国节点",
+  // "IP-CIDR,88.82.0.0/19,英国节点",
   // CMLinkUK EE
-  "IP-CIDR,46.68.0.0/17,英国节点",
+  // "IP-CIDR,46.68.0.0/17,英国节点",
   // Giffgaff
-  "IP-CIDR,87.194.0.0/16,英国节点",
+  // "IP-CIDR,87.194.0.0/16,英国节点",
 ];
 // ACL4SSR 规则集
 const ACL4SSRRules = [
@@ -601,7 +601,7 @@ const rules = [
   "RULE-SET,google-play,📢 谷歌 Play",
   "RULE-SET,google-gemini,🤖 AI 平台",
   "RULE-SET,google,📢 谷歌服务",
-  "RULE-SET,category-ads-all,❌ 全局拦截",
+  // "RULE-SET,category-ads-all,❌ 全局拦截",
   "RULE-SET,category-ai-not-cn,🤖 AI 平台",
   "RULE-SET,category-dev,🔰 模式选择",
   "RULE-SET,category-emby,🎬 Emby",
@@ -622,7 +622,7 @@ const rules = [
   // Loyalsoldier 规则集
   "RULE-SET,direct,🎯 全局直连",
   "RULE-SET,proxy,🔰 模式选择",
-  "RULE-SET,reject,❌ 全局拦截",
+  // "RULE-SET,reject,❌ 全局拦截",
   "RULE-SET,private,🎯 全局直连",
   "RULE-SET,apple,🍎 苹果服务",
   "RULE-SET,icloud,🍎 苹果服务",
