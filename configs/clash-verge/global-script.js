@@ -459,6 +459,9 @@ const customRules = [
   // 临时
   "DOMAIN-SUFFIX,ftp.hp.com,🔰 模式选择",
 
+  // EDU
+  "DOMAIN-SUFFIX,sheerid.com,🔰 模式选择",
+
   // PikPak 下载
   // 示例：dl-z01a-0053.mypikpak.com
   "AND,((PROCESS-NAME,PikPak.exe),(DOMAIN-SUFFIX,dl.pikpak.site)),🎯 全局直连",
@@ -1303,7 +1306,7 @@ const proxyGroupsConfig = [
     ...groupBaseOption,
     name: "❌ 全局拦截",
     type: "select",
-    proxies: ["REJECT", "DIRECT"],
+    proxies: ["REJECT", "DIRECT", "🚀 节点选择"],
     icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg",
   },
   {
